@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1651165678 source:d:\work\learncode\sourcecode\th\1.5.4\main.cpp
+	<stdio.h>
+	<time.h>
+	<stdlib.h>
+
