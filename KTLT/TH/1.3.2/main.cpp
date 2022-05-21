@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 
+// Nhap mang khong trung
 void ScanArr(int a[], int x){
     int boolArr[100001][2] = {0};
     for(int i = 0; i < x; ++i){
@@ -21,6 +22,7 @@ void ScanArr(int a[], int x){
     }
 }
 
+// Xuat mang
 void PrintArray(int a[], int x){
     printf("-->: ");
     for(int i = 0; i < x; ++i){
@@ -29,12 +31,14 @@ void PrintArray(int a[], int x){
     printf("\n");
 }
 
+// Kiem tra so chinh phuong
 int IsScp(int x){
     int sqr = sqrt(x);
     if(sqr*sqr == x) return 1;
     return 0;
 }
 
+// Xuat cac so chinh phuong vi tri le
 int PrintScpOdd(int a[], int x){
     for(int i = 0; i < x; ++i){
         if(i % 2 != 0 && IsScp(a[i]) == 1) printf("%d ", a[i]);
@@ -42,7 +46,7 @@ int PrintScpOdd(int a[], int x){
     printf("\n");
 }
 
-
+// Tra ve so lon nhat trong mang
 int maxArray(int a[], int x){
     int maxI = 0;
     for(int i = 1; i < x; i++){
@@ -51,6 +55,7 @@ int maxArray(int a[], int x){
     return a[maxI];
 }
 
+// Xuat cac vi tri lon nhat trong mang
 void PrintMax(int a[], int x){
     int tg = maxArray(a, x);
     for(int i = 0; i < x; ++i){
@@ -59,13 +64,14 @@ void PrintMax(int a[], int x){
     printf("\n");
 }
 
+// So am xuat hien dau tien
 int FirstNegativeNum(int a[], int x){
     for(int i = 0; i < x; ++i){
         if(a[i] < 0) return i;
     }
     return -1;
 }
-
+// So duong xuat hien cuoi cung
 int FirstPositiveNum(int a[], int x){
     for(int i = 0; i < x; ++i){
         if(a[i] > 0) return i;
@@ -73,6 +79,7 @@ int FirstPositiveNum(int a[], int x){
     return -1;
 }
 
+// So am lon nhat
 int MaxNegativeNum(int a[], int x){
     if(FirstNegativeNum(a, x) != -1){
         int Max = FirstNegativeNum(a,x);
@@ -84,6 +91,7 @@ int MaxNegativeNum(int a[], int x){
     return 1;
 }
 
+// So duong nho nhat
 int MinPositiveNum(int a[], int x){
     if(FirstPositiveNum(a, x) != -1){
         int Min = FirstPositiveNum(a,x);
@@ -95,7 +103,7 @@ int MinPositiveNum(int a[], int x){
     return -1;
 }
 
-
+// Tong cac phan tu o vi tri chan
 int SumIEven(int a[], int x){
     int res = 0;
     for(int i = 0; i < x; ++i){
@@ -104,13 +112,14 @@ int SumIEven(int a[], int x){
     return res;
 }
 
+// Hoan vi 
 void Swap(int &x, int &y){
     int tg = x;
     x = y;
     y = tg;
 }
 
-
+// Sap xep mang tang dan: SelectionSort
 void SelectionSortUp(int a[], int x, int st){
     for(int i = st; i < x-1; ++i){
         int minI = i;

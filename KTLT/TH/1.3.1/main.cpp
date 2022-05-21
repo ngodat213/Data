@@ -1,11 +1,20 @@
 #include <stdio.h>
 
+//a
+void scanN(int &n){
+    printf("a: Nhap n: ");
+    while(n<1 || n>100){
+        scanf("%d", &n);
+    }
+}
+
 void scanArray(int a[], int x){
     for(int i = 0; i < x; ++i){
         scanf("%d", &a[i]);
     }
 }
 
+//b
 void printArray(int a[], int x){
     printf("-->: ");
     for(int i = 0; i < x; ++i){
@@ -14,6 +23,7 @@ void printArray(int a[], int x){
     printf("\n");
 }
 
+//c
 int searchFirst(int a[], int x){
     for(int i = 0; i < x; ++i){
         if(a[i] > 0) return i;
@@ -21,6 +31,7 @@ int searchFirst(int a[], int x){
     return -1;
 }
 
+//d
 int searchFinal(int a[], int x){
     for(int i = x-1; i >= 0; --i){
         if(a[i] > 0) return i;
@@ -28,6 +39,7 @@ int searchFinal(int a[], int x){
     return -1;
 }
 
+//e
 int maxArray(int a[], int x){
     int maxI = 0;
     for(int i = 1; i < x; i++){
@@ -36,6 +48,7 @@ int maxArray(int a[], int x){
     return a[maxI];
 }
 
+//f
 int cntMax(int a[], int x){
     int maxA = maxArray(a, x), cnt = 0;
     for(int i = 0; i < x; ++i){
@@ -44,6 +57,7 @@ int cntMax(int a[], int x){
     return cnt;
 }
 
+//g
 int MaxIArray(int a[], int x){
     int maxN = maxArray(a, x);
     for(int i = 0; i < x; ++i){
@@ -51,6 +65,7 @@ int MaxIArray(int a[], int x){
     }
 }
 
+//h, i
 void InsertArray(int a[], int &x, int st, int n){
     for(int i = x-1; i >= st-1; --i){
         a[i+1] = a[i];
@@ -59,6 +74,7 @@ void InsertArray(int a[], int &x, int st, int n){
     ++x;
 }
 
+//j, k
 void DeleteArray(int a[], int &x, int vt){
     for(int i = vt; i < x; i++){
         a[i] = a[i+1];
@@ -66,6 +82,7 @@ void DeleteArray(int a[], int &x, int vt){
     --x;
 }
 
+//l
 int checkOdd(int a[], int x){
     for(int i = 0; i < x; ++i){
         if(a[i] % 2 != 0) return 1;
@@ -81,6 +98,7 @@ int cntEven(int a[], int x){
     return cnt;
 }
 
+//m
 void ArrayEven(int a[], int x, int b[], int n){
     int cnt = 0;
     for(int i = 0; i < x; ++i){
@@ -93,10 +111,7 @@ int main()
 {
     int n;
     //a
-    printf("a: Nhap n: ");
-    while(n<1 || n>100){
-        scanf("%d", &n);
-    }
+    
     int a[n], tg = 0, vt = 0;
     printf("Nhap mang: ");
     scanArray(a, n);
