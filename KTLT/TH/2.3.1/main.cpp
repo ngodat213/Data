@@ -70,7 +70,7 @@ void PrintPS(PhoneService PS){
     printf("Ten dang ki: %d\n", PS.ID);
     printf("Ngay dang ki: "); PrintDate(PS.DateRigister);
     printf("So dien thoai: %d\n", PS.PhoneNumber);
-    printf("Loai thue bao: %d\n", PS.Type);
+    printf("Loai thue bao: %s\n", PS.Type);
     printf("Thoi gian goi noi mang: %d\n", PS.TimeOff);
     printf("Thoi gian goi ngoai mang: %d\n", PS.TimeOnl);
 }
@@ -80,7 +80,7 @@ void PrintPS_HireMoney(PhoneService PS){
     printf("Ten dang ki: %d\n", PS.ID);
     printf("Ngay dang ki: "); PrintDate(PS.DateRigister);
     printf("So dien thoai: %d\n", PS.PhoneNumber);
-    printf("Loai thue bao: %d\n", PS.Type);
+    printf("Loai thue bao: %s\n", PS.Type);
     printf("Thoi gian goi noi mang: %d\n", PS.TimeOff);
     printf("Thoi gian goi ngoai mang: %d\n", PS.TimeOnl);
     printf("Tien cuoc goi noi mang: %d\n", PS.HireMoneyOff);
@@ -91,6 +91,12 @@ void ScanPS_Array(PhoneService PS[], int &n){
     ScanNum(n);
     for(int i = 0; i < n; ++i){
        ScanPS(PS[i]);
+    }
+}
+
+void PrintPSArray_HireMoney(PhoneService PS[], int n){
+    for(int i = 0; i < n; ++i){
+       PrintPS_HireMoney(PS[i]);
     }
 }
 
@@ -112,7 +118,7 @@ void _swapPS(PhoneService &PS1, PhoneService &PS2){
 }
 
 void SortID_PS(PhoneService PS[], int n){
-    for(int i = 0; i < n-1; i++){
+    for(int i = 0; i < n-1; ++i){
         for(int j = i+1; j < n; ++j){
             if(PS[i].ID > PS[j].ID) _swapPS(PS[i], PS[j]);
         }
@@ -162,6 +168,40 @@ int CountPrepay_PS(PhoneService PS[], int n, char index[]){
 
 int main()
 {
-
+    PhoneService PS[1000];
+    int n;
+    char c[100];
+    // a
+    printf("-===========A===========-\n");
+    ScanPS_Array(PS, n);
+    //b
+    printf("-===========B===========-\n");
+    PrintPS_Array(PS, n);
+    //c
+    printf("-===========C===========-\n");
+    AddPS_Array(PS, n);
+    //d
+    printf("-===========D===========-\n");
+    SortID_PS(PS, n);
+    PrintPS_Array(PS, n);
+    //e
+    printf("-===========E===========-\n");    printf("Nhap ten can tim: ");
+    fflush(stdin);
+    gets(c);
+    FindName_PS(PS, n, c);
+    //f
+    printf("-===========F===========-\n");    printf("Nhap loai cuoc can tim: ");
+    fflush(stdin);
+    gets(c);
+    FindType_PS(PS, n, c);
+    //g
+    printf("-===========G===========-\n");    FindYearRegister_PS(PS, n, 2010);
+    //h
+    printf("-===========H===========-\n");
+    CalculateHireMoney_PS(PS, n);
+    PrintPSArray_HireMoney(PS, n);
+    //i
+    printf("-===========I===========-\n");
+    printf("So luong thue bao cuoc: %d", CountPrepay_PS(PS, n, "TT"));
     return 0;
 }
