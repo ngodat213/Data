@@ -1,3 +1,4 @@
+// Cre: Ngodat213
 #include <stdio.h>
 
 //a
