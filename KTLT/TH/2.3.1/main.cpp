@@ -1,5 +1,5 @@
 #include<stdio.h>
-
+#include<string.h>
 
 //==============STRUCT=============
 typedef struct Date{
@@ -39,7 +39,7 @@ void ScanDate(Date &date){
     printf("Thang: ");
     scanf("%d", &date._morth);
     printf("Nam: ");
-    scanf("%d\n", &date._year);
+    scanf("%d", &date._year);
 }
 
 void PrintDate(Date date){
@@ -50,14 +50,16 @@ void ScanPS(PhoneService &PS){
     printf("-========================-\n");
     printf("ID: ");
     scanf("%d", &PS.ID);
-    printf("Ten dang ki: \n");
+    printf("Ten dang ki: ");
     fflush(stdin);
     gets(PS.Name);
     printf("Ngay dang ki: \n");
     ScanDate(PS.DateRigister);
+    printf("So dien thoai: ");
+    scanf("%d", &PS.PhoneNumber);
     printf("Loai thue bao: ");
     fflush(stdin);
-    scanf("%s", &PS.Type);
+    gets(PS.Type);
     printf("Thoi gian goi noi mang: ");
     scanf("%d", &PS.TimeOff);
     printf("Thoi gian goi ngoai mang: ");
@@ -108,7 +110,7 @@ void PrintPS_Array(PhoneService PS[], int n){
 
 void AddPS_Array(PhoneService PS[], int &n){
     n++;
-    ScanPS(PS[n]);
+    ScanPS(PS[n-1]);
 }
 
 void _swapPS(PhoneService &PS1, PhoneService &PS2){
@@ -127,7 +129,7 @@ void SortID_PS(PhoneService PS[], int n){
 
 void FindName_PS(PhoneService PS[], int n, char index[]){
     for(int i = 0; i < n; ++i){
-        if(PS[i].Name == index){
+        if(strcmp(index, PS[i].Name) == 0){
             PrintPS(PS[i]);
         }
     }
@@ -135,7 +137,7 @@ void FindName_PS(PhoneService PS[], int n, char index[]){
 
 void FindType_PS(PhoneService PS[], int n, char index[]){
     for(int i = 0; i < n; ++i){
-        if(PS[i].Type == index){
+        if(strcmp(index, PS[i].Type) == 0){
             PrintPS(PS[i]);
         }
     }
@@ -159,7 +161,7 @@ void CalculateHireMoney_PS(PhoneService PS[], int n){
 int CountPrepay_PS(PhoneService PS[], int n, char index[]){
     int cnt = 0;
     for(int i = 0; i < n; ++i){
-        if(PS[i].Type == index){
+        if(strcmp(PS[i].Type, index) == 0){
             cnt++;
         }
     }
@@ -170,30 +172,32 @@ int main()
 {
     PhoneService PS[1000];
     int n;
-    char c[100];
+    char cmp1[20];
+    char cmp2[2];
     // a
     printf("-===========A===========-\n");
     ScanPS_Array(PS, n);
     //b
-    printf("-===========B===========-\n");
-    PrintPS_Array(PS, n);
-    //c
-    printf("-===========C===========-\n");
-    AddPS_Array(PS, n);
-    //d
-    printf("-===========D===========-\n");
-    SortID_PS(PS, n);
-    PrintPS_Array(PS, n);
+//    printf("-===========B===========-\n");
+//    PrintPS_Array(PS, n);
+//    //c
+//    printf("-===========C===========-\n");
+//    AddPS_Array(PS, n);
+//    //d
+//    printf("-===========D===========-\n");
+//    SortID_PS(PS, n);
+//    PrintPS_Array(PS, n);
     //e
-    printf("-===========E===========-\n");    printf("Nhap ten can tim: ");
+    printf("-===========E===========-\n");
+    printf("Nhap ten can tim: ");
     fflush(stdin);
-    gets(c);
-    FindName_PS(PS, n, c);
+    gets(cmp1);
+    FindName_PS(PS, n, cmp1);
     //f
-    printf("-===========F===========-\n");    printf("Nhap loai cuoc can tim: ");
-    fflush(stdin);
-    gets(c);
-    FindType_PS(PS, n, c);
+    printf("-===========F===========-\n");    fflush(stdin);
+    printf("Nhap loai cuoc can tim: ");
+    gets(cmp2);
+    FindType_PS(PS, n, cmp2);
     //g
     printf("-===========G===========-\n");    FindYearRegister_PS(PS, n, 2010);
     //h
