@@ -28,7 +28,46 @@ int SumEvenArr(int a[], int n){
     else return SumEvenArr(a, n-1);
 }
 
-int Sum
+int CntPositive(int a[], int n){
+    if(n == 0)
+        return 0;
+    if(a[n-1] > 0) return CntPositive(a, n-1) + 1;
+    else return CntPositive(a, n-1);
+}
+
+int MaxArr(int a[], int n){
+    if(n == 1)
+        return a[0];
+    if(a[n-1] > MaxArr(a, n-1))
+        return a[n-1];
+    else return MaxArr(a, n-1);
+}
+
+int MinArr(int a[], int n){
+    if(n == 1)
+        return a[0];
+    if(a[n-1] < MaxArr(a, n-1))
+        return a[n-1];
+    else return MaxArr(a, n-1);
+}
+
+int FisrtEven(int a[], int n){
+    if(n == 1){
+        if(a[0] % 2 == 0) return a[0];
+        else return -1;
+    }
+    if(a[n-1] % 2 == 0) return a[n-1];
+    else return FisrtEven(a, n-1);
+}
+
+int FindFisrtX(int a[], int n, int x){
+    if(n == 1){
+        if(a[0] == x) return a[0];
+        else return -1;
+    }
+    if(a[n-1] == x) return n-1;
+    else return FindFisrtX(a, n-1, x);
+}
 
 int main()
 {
@@ -37,5 +76,9 @@ int main()
     PrintArr(a, n);
     printf("\nTong cac phan tu trong mang: %d", SumArr(a, n));
     printf("\nTong cac phan tu chan trong mang: %d", SumEvenArr(a, n));
+    printf("\nSo phan tu chan trong mang: %d", CntPositive(a, n));
+    printf("\nPhan tu lon nhat trong mang: %d", MaxArr(a, n));
+    printf("\nDuong cuoi cung trong mang: %d", FisrtEven(a, n));
+    printf("\nPhan tu X cuoi cung trong mang: %d", FindFisrtX(a, n, 5));
     return 0;
 }
