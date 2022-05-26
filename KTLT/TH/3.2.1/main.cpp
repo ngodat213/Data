@@ -38,5 +38,6 @@ int main(){
     ScanArr(a, n);
     PrintArr(a, n);
     printf("Tong mang: %d\n", SumArr(a,n));
+    delete []a;
     return 0;
 }
