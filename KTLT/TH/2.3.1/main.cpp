@@ -178,15 +178,15 @@ int main()
     printf("-===========A===========-\n");
     ScanPS_Array(PS, n);
     //b
-//    printf("-===========B===========-\n");
-//    PrintPS_Array(PS, n);
-//    //c
-//    printf("-===========C===========-\n");
-//    AddPS_Array(PS, n);
-//    //d
-//    printf("-===========D===========-\n");
-//    SortID_PS(PS, n);
-//    PrintPS_Array(PS, n);
+    printf("-===========B===========-\n");
+    PrintPS_Array(PS, n);
+    //c
+    printf("-===========C===========-\n");
+    AddPS_Array(PS, n);
+    //d
+    printf("-===========D===========-\n");
+    SortID_PS(PS, n);
+    PrintPS_Array(PS, n);
     //e
     printf("-===========E===========-\n");
     printf("Nhap ten can tim: ");
