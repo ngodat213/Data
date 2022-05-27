@@ -67,17 +67,17 @@ int MaxIArray(int a[], int x){
 }
 
 //h, i
-void InsertArray(int a[], int &x, int st, int n){
-    for(int i = x-1; i >= st-1; --i){
+void InsertArray(int a[], int &x, int pos, int n){
+    for(int i = x-1; i >= pos-1; --i){
         a[i+1] = a[i];
     }
-    a[st] = n;
+    a[pos] = n;
     ++x;
 }
 
 //j, k
-void DeleteArray(int a[], int &x, int vt){
-    for(int i = vt; i < x; i++){
+void RemoveArray(int a[], int &x, int pos){
+    for(int i = pos; i < x; i++){
         a[i] = a[i+1];
     }
     --x;
@@ -143,7 +143,7 @@ int main()
     printArray(a, n);
     //j
     printf("j: Xoa pha tu dau tien: ");
-    DeleteArray(a, n, 0);
+    RemoveArray(a, n, 0);
     printArray(a, n);
     //k
     printf("k: Nhap vi tri: ");
@@ -151,7 +151,7 @@ int main()
     while(vt<1 || vt>n){
         scanf("%d", &vt);
     }
-    DeleteArray(a, n, vt);
+    RemoveArray(a, n, vt);
     printArray(a, n);
     //l
     if(checkOdd(a, n) == 1) printf("l: Co phan tu le trong mang\n");
