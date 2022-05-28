@@ -2,12 +2,13 @@
 #include<string.h>
 class Dimens{
     public:
+        int cntClass = 0;
         int MaxNum = 100;
         int MinNum = 0;
         int MaxScore = 10;
         int MinScore = 0;
-        char Male = 'x';
-        char Female = 'y';
+        char Male = 'y';
+        char Female = 'x';
         char IT[3] = "IT";
 };
 
@@ -25,7 +26,10 @@ typedef struct Student{
     float ScoreMath;
     float ScorePhysics;
     float ScoreIT;
+    int n; // it means which class is in the class data
 };
+
+Dimens dimens;
 
 void SetNum(int &n){
     Dimens dimen;
@@ -39,15 +43,28 @@ void SetNum(int &n){
 }
 
 bool isMale(char c){
-    Dimens dimens;
     if(c == dimens.Male) return 1;
     return 0;
 }
 
 bool isScore(float n){
-    Dimens dimens;
     if(n >= dimens.MinScore && n <= dimens.MaxScore) return 1;
     return 0;
+}
+
+bool isGender(char c){
+    if(c == dimens.Male || c == dimens.Female) return 1;
+    return 0;
+}
+
+int isOldClass(Student *st, int n, Student *stCmp){
+    int pos = 0;
+    for(int i = 0; i < n; i++){
+        if(strcmp((st+i)->Class, stCmp->Class) == 0){
+            pos = i;
+        }
+    }
+    return pos;
 }
 
 void SetStudent(Student *st){
@@ -60,7 +77,13 @@ void SetStudent(Student *st){
     scanf("%d", &st->Id);
     // Gender
     printf("Gioi tinh x-nam, y-nu: ");
-    scanf("%c", &st->Gender);
+    do{
+        fflush(stdin);
+        scanf("%c", &st->Gender);
+        if(!isGender(st->Gender))
+            printf("Nhap lai!\n");
+    }while(!isGender(st->Gender));
+
     // Class
     printf("Lop: ");
     fflush(stdin);
@@ -102,6 +125,14 @@ void SetStudent_Arr(Student *st, int &n){
     SetNum(n);
     for(int i = 0; i < n; ++i){
         SetStudent(st+i);
+        // Kiem tra xem st->Class co trong danh sach student khong
+        // Neu khong gan st->n bang dimens.cntClass + 1;
+        int _isOldClass = isOldClass(st, n, st+i);
+        if(_isOldClass == 0){
+            (st+i)->n = &dimens.cntClass++;
+        }else{
+            (st+i)->n = &_isOldClass;
+        }
     }
 }
 
@@ -152,22 +183,21 @@ void _swapStudent(Student *st1, Student *st2){
     st2 = tg;
 }
 
-void SortStudent_Class(Student *st, int n){
-    for(int i = 0; i < n-1; ++i){
-        for(int j = i+1; j < n; ++j){
-            if(strcmp((st+i)->Class, (st+j)->Class) == 1){
-                _swapStudent((st+i), (st+j));
+void ShowStudent_Class(Student *st, int n){
+    for(int i = 0; i < n; ++i){
+        for(int j = 0; j < n; ++j){
+            if((st+j)->n == i){
+                GetStudent(st+j);
             }
         }
     }
 }
 
 int main(){
-    Dimens dimen;
     int n;
-    Student *st = new Student[dimen.MaxNum];
+    Student *st = new Student[dimens.MaxNum];
     SetStudent_Arr(st, n);
-    SortStudent_Class(st, n);
-    GetStudent_Arr(st, n);
+    ShowStudent_Class(st, n);
+    printf("%d", dimens.cntClass);
     return 0;
 }
