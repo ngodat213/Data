@@ -68,10 +68,10 @@ int main()
     NhapSL(m, n);
     NhapMaTran(a, m, n);
     XuatMaTran(a, m, n);
-    printf("Nhap dong k: ");
+    printf("Nhap dong k : ");
     scanf("%d", &pos);
-    printf("Tong dong k: %d\n", TongDongK(a, m, n, pos));
-    printf("Phan tu lon nhat: %d\n", PhanTuLonNhat(a, m, n));
-    printf("So nguyen to cuoi cung: %d\n", SoNguyenToCuoiCung(a, m, n));
+    printf("Tong dong k : %d\n", TongDongK(a, m, n, pos));
+    printf("Phan tu lon nhat : %d\n", PhanTuLonNhat(a, m, n));
+    printf("So nguyen to cuoi cung : %d\n", SoNguyenToCuoiCung(a, m, n));
     return 0;
 }
