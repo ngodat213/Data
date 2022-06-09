@@ -35,6 +35,6 @@ int main(){
     int *a = new int[n];
     NhapMang(a, n);
     XuatMang(a, n);
-    printf("Mang: %d", KiemTraLe(a, n));
+    printf("Mang : %d", KiemTraLe(a, n));
     return 0;
 }
