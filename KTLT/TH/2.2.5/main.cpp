@@ -13,10 +13,10 @@ struct Date{
 
 typedef struct Student{
     char stId[11];
-    char stName[31];
+    char stName[50];
     Date stBirthday;
     char stGender;
-    char stClass[7];
+    char stClass[8];
     float stScore;
 }SV;
 
@@ -34,21 +34,20 @@ void StudentMaxScore(Student st[], int n);
 void InsertStudent(Student st[], int &n);
 void FindAndDelete(Student st[], int &n, char index[]);
 void SortStudent(Student st[], int n);
-
+void Title();
 int main()
 {
-    int n; char strCmp[31];
+    int n = 8; char strCmp[31];
     SV dataStudent[MAX] = {
-        {"001", "Ngo Van Tien Dat", {26,10,2003}, 'y', "21DTHC5", 10.0},
-        {"002", "Vo Thanh am", {12,12,2002}, 'y', "21DTHC5", 1.0},
-        {"003", "Hello word", {26,10,2003}, 'y', "21DTHC5", 10.0},
-        {"004", "Ngo Van Tien Dat", {26,10,2003}, 'y', "21DTHC5", 10.0},
-        {"005", "Ngo Van Tien Dat", {26,10,2003}, 'y', "21DTHC5", 10.0},
-        {"006", "Ngo Van Tien Dat", {26,10,2003}, 'y', "21DTHC5", 10.0},
-        {"007", "Ngo Van Tien Dat", {26,10,2003}, 'y', "21DTHC5", 10.0},
-        {"008", "Ngo Van Tien Dat", {26,10,2003}, 'y', "21DTHC5", 10.0},
+        {"001", "Ngo Van Tien", {26,10,2003}, 'y', "21DTHC5", 10.0},
+        {"002", "Vo Thanh Nam", {12,12,2002}, 'y', "21DTHC5", 1.0},
+        {"003", "Nguyen Thi Ngoc Linh", {2,10,2003}, 'y', "21DTHC5", 1.0},
+        {"004", "Ho Phuoc Nam", {2,1,2003}, 'y', "21DTHC5", 1.0},
+        {"005", "Nguyen Hai Son", {2,10,2008}, 'y', "21DTHC5", 1.0},
+        {"006", "Le Thi Thanh Ngan", {26,10,2003}, 'y', "21DTHC5", 1.0},
+        {"007", "Doan Nguyen Huyen Trang", {26,10,2003}, 'y', "21DTHC5", 1.0},
+        {"008", "Nguyen Thi Tuyet Mai", {26,10,2003}, 'y', "21DTHC5", 1.0},
     };
-    SetStudent_Arr(dataStudent, n);
     GetStudent_Arr(dataStudent, n);
     StudentScoreThanN(dataStudent, n, 5);
     StudentIT(dataStudent, n);
@@ -68,7 +67,7 @@ int main()
 }
 
 void ScanNum(int &n){
-    printf("Nhap so luong san phan: 0 < n <= 100: ");
+    printf("Nhap so luong : 0 < n <= 100: ");
     do{
         scanf("%d", &n);
         if(n <= 0 || n > 100){
@@ -121,17 +120,20 @@ void SetStudent_Arr(Student st[], int &n){
         SetStudent(st[i]);
     }
 }
-
+void Title(){
+    printf("\n   STT  \t\t\tTen\tLop\t\tGioi tinh\tNgay sinh\tLop\tDiem");
+}
 // Xuat 1 sinh vien
 void GetStudent(Student st){
-    printf("\n%-11s\t%-31s\n", st.stId, st.stName);
-    if(st.stGender == 'x') printf("Female\n");
-    else printf("Male\n");
+    printf("\n%6s\t|%30s", st.stId, st.stName);
+    if(st.stGender == 'x') printf("|\tFemale");
+    else printf("|\tMale\t");
     GetDate(st.stBirthday);
-    printf("Class: %-8s\nScore: %.1f\n\n", st.stClass, st.stScore);
+    printf("\t|%9s\t|Score: %.1f\n\n", st.stClass, st.stScore);
 }
 // Xuat N sinh vien
 void GetStudent_Arr(Student st[], int n){
+    Title();
     for(int i = 0; i < n; ++i){
         GetStudent(st[i]);
     }
