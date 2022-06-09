@@ -51,13 +51,13 @@ int MinArr(int a[], int n){
     else return MaxArr(a, n-1);
 }
 
-int FisrtEven(int a[], int n){
+int LastEven(int a[], int n){
     if(n == 1){
         if(a[0] % 2 == 0) return a[0];
         else return -1;
     }
     if(a[n-1] % 2 == 0) return a[n-1];
-    else return FisrtEven(a, n-1);
+    else return LastEven(a, n-1);
 }
 
 int FindFisrtX(int a[], int n, int x){
@@ -78,7 +78,7 @@ int main()
     printf("\nTong cac phan tu chan trong mang: %d", SumEvenArr(a, n));
     printf("\nSo phan tu chan trong mang: %d", CntPositive(a, n));
     printf("\nPhan tu lon nhat trong mang: %d", MaxArr(a, n));
-    printf("\nDuong cuoi cung trong mang: %d", FisrtEven(a, n));
+    printf("\nChan cuoi cung trong mang: %d", LastEven(a, n));
     printf("\nPhan tu X cuoi cung trong mang: %d", FindFisrtX(a, n, 5));
     return 0;
 }
