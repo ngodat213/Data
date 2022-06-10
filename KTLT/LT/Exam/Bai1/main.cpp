@@ -24,7 +24,7 @@ void XuatMang(int *a, int n){
 // Kiem tra le cach 1
 int KiemTraLeC1(int *a, int n){
     if(n == 0) return 1;
-    if(*(a+(n-1)) % 2 == 0) return 0;
+    if(*(a+(n-1)) % 2 != 0) return 0;
     return KiemTraLeC1(a, n-1);
 }
 
@@ -32,7 +32,7 @@ int KiemTraLeC1(int *a, int n){
 int KiemTraLeC2(int *a, int n ,bool b = 1){
     if(n == 0 && b == 1) return 1;
     else if(b == 0)return 0;
-    if(*(a+(n-1)) % 2 == 0) return KiemTraLeC2(a, n-1, 0);
+    if(*(a+(n-1)) % 2 != 0) return KiemTraLeC2(a, n-1, 0);
     else KiemTraLeC2(a, n-1, 1);
 }
 int main(){
@@ -41,6 +41,6 @@ int main(){
     int *a = new int[n];
     NhapMang(a, n);
     XuatMang(a, n);
-    printf("Kiem tra le : %d", KiemTraLeC2(a, n));
+    printf(KiemTraLeC1(a, n) ? "Mang khong chua so le" : "Mang chua so le");
     return 0;
 }
