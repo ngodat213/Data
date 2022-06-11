@@ -30,10 +30,10 @@ void NhapNCanBo(CB a[], int n){
     }
 }
 
-int DemCanBoNLuong(CB a[], int n, int index){
+int DemCanBo(CB a[], int n){
     int cnt = 0;
     for(int i = 0; i < n; ++i){
-        if(a[i].Luong >= index) cnt++;
+        if(a[i].Luong >= 10000000 && a[i].NamSinh < 1990) cnt++;
     }
     return cnt;
 }
@@ -45,7 +45,7 @@ int main()
     scanf("%d", &n);
     CB a[n];
     NhapNCanBo(a, n);
-    printf("So can bo luong 10000000: %d\n", DemCanBoNLuong(a, n, 10000000));
+    printf("So can bo luong 10000000 va truoc nam 1990: %d\n", DemCanBo(a, n));
 
     return 0;
 }
