@@ -42,11 +42,11 @@ int pop(){
     }
 }
 
-int main(){
-    push(26);
-    push(10);
-    push(2003);
-    while(!isEmpty()){
-        cout << pop() << endl;
-    }
-}
+//int main(){
+//    push(26);
+//    push(10);
+//    push(2003);
+//    while(!isEmpty()){
+//        cout << pop() << endl;
+//    }
+//}
