@@ -76,7 +76,6 @@ bool Check3x3(int a[9][9]){
 
 int main(){
 	int a[9][9];
-	int n; // -- N CASE -- //
 	SaveFile(PATH, a);
 	for(int i = 0; i < 9; ++i){
 		for(int j = 0; j < 9; ++j){
